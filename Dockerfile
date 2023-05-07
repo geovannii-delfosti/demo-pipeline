@@ -1,7 +1,15 @@
-FROM node:12.22-alpine
-WORKDIR /app
-COPY package.json yarn.lock /app
-RUN yarn install
-COPY . /app
-EXPOSE 3000
-CMD npm run start:prod
+FROM      mhart/alpine-node:6.10
+
+# Options:
+ARG       NODE_ENV=production
+ENV       NODE_ENV $NODE_ENV
+ENV       APP_HOME /hello-world
+
+# Install Modules:
+WORKDIR   $APP_HOME
+
+# Copy in files:
+COPY      . $APP_HOME
+
+EXPOSE    3000
+CMD       ["node", "index.js"]
