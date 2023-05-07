@@ -15,6 +15,6 @@ phases:
  post_build:
    commands:
      - docker push $REPOSITORY_URI:$IMAGE_TAG
-     - printf '[{"name":"nestjs-graphql","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+     - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
  files: imagedefinitions.json
