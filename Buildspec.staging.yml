@@ -11,7 +11,7 @@ phases:
    commands:
      - echo Build started on `date`
      - docker info
-     - docker build -t node-hello -f Dockerfile .
+     - docker build -t node-hello:latest .
      - docker tag node-hello:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build:
    commands:
