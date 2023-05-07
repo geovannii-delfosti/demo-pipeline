@@ -8,7 +8,7 @@ phases:
      - IMAGE_TAG=${COMMIT_HASH:=latest}
  build:
    commands:
-     - docker build -t $REPOSITORY_URI:latest -f Dockerfile .
+     - docker build -t 482041903125.dkr.ecr.us-east-2.amazonaws.com/nestjs-graphql:latest -f Dockerfile .
      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build:
    commands:
