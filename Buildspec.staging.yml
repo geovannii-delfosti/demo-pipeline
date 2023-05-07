@@ -2,14 +2,14 @@ version: 0.2
 phases:
  pre_build:
    commands:
-     - REPOSITORY_URI={482041903125.dkr.ecr.us-east-2.amazonaws.com/nestjs-graphql}
+     - REPOSITORY_URI=482041903125.dkr.ecr.us-east-2.amazonaws.com/nestjs-graphql
      - aws ecr get-login-password | docker login --username AWS --password-stdin 482041903125.dkr.ecr.us-east-2.amazonaws.com/nestjs-graphql
      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
      - IMAGE_TAG=${COMMIT_HASH:=latest}
  build:
    commands:
-     - docker build -t 482041903125.dkr.ecr.us-east-2.amazonaws.com/nestjs-graphql:latest -f Dockerfile .
-     - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+     - docker build -t node-hello -f Dockerfile .
+     - docker tag node-hello:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build:
    commands:
      - docker push $REPOSITORY_URI:latest
