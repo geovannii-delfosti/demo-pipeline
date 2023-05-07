@@ -8,6 +8,7 @@ phases:
      - IMAGE_TAG=${COMMIT_HASH:=latest}
  build:
    commands:
+     - docker info
      - docker build -t node-hello -f Dockerfile .
      - docker tag node-hello:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build:
