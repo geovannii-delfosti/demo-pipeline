@@ -14,7 +14,6 @@ phases:
      - docker tag node-hello:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build:
    commands:
-     - docker push $REPOSITORY_URI:latest
      - docker push $REPOSITORY_URI:$IMAGE_TAG
      - printf '[{"name":"nestjs-graphql","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
